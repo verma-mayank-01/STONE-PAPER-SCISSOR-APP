@@ -1,0 +1,83 @@
+package com.example.stone_paper_scissor
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val arr = arrayOf("stone","paper","scissor")
+        val st = findViewById<ImageButton>(R.id.stone)
+        val ppr = findViewById<ImageButton>(R.id.paper)
+        val scr = findViewById<ImageButton>(R.id.scissor)
+        val result = findViewById<TextView>(R.id.result)
+        val score = findViewById<TextView>(R.id.score)
+        val comp = arr.random()
+        val reset = findViewById<Button>(R.id.reset)
+        var sc = 0
+
+        st.setOnClickListener {
+            val comp = arr.random()
+            if (comp=="stone"){
+                result.text = " DRAW"
+            }
+            if (comp=="paper"){
+                result.text = " You LOST!! Computer chooses paper "
+                sc-=1
+                score.text = sc.toString()
+            }
+            if (comp=="scissor"){
+                result.text = " You WIN"
+                sc+=1
+                score.text = sc.toString()
+            }
+
+        }
+        ppr.setOnClickListener {
+            val comp = arr.random()
+            if (comp=="paper"){
+                result.text = " DRAW"
+            }
+            if (comp=="scissor"){
+                result.text = " You LOST!! Computer chooses scissor "
+                sc-=1
+                score.text = sc.toString()
+            }
+            if (comp=="stone"){
+                result.text = " You WIN"
+                sc+=1
+                score.text = sc.toString()
+            }
+
+        }
+        scr.setOnClickListener {
+            val comp = arr.random()
+            if (comp=="scissor"){
+                result.text = " DRAW"
+            }
+            if (comp=="stone"){
+                result.text = " You LOST!! Computer chooses stone "
+                sc-=1
+                score.text = sc.toString()
+            }
+            if (comp=="paper"){
+                result.text = " You WIN"
+                sc+=1
+                score.text = sc.toString()
+            }
+
+        }
+        reset.setOnClickListener {
+            result.text = ""
+            sc=0
+            score.text = sc.toString()
+        }
+
+    }
+
+
+}
